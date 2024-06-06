@@ -105,8 +105,10 @@ export const scrapeLinkedInProfile = async (url: string, sessionCookieValue: str
         const name = await page.$$eval(nameSelector, nodes => nodes[0].innerText);
 
         const profilePictureSelector = '.profile-photo-edit__edit-btn';
-        const profilePictureElement = await page.$$eval(profilePictureSelector, nodes => nodes[0].children[0] )
-        const profilePictureLink = (profilePictureElement as HTMLImageElement).src
+        const profilePictureLink = await page.$$eval(profilePictureSelector, nodes => {
+            const profilePictureElement = nodes[0].children[0] 
+            return (profilePictureElement as HTMLImageElement).src
+        });
 
         return { name, profilePictureLink };
     }

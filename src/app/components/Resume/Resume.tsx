@@ -54,6 +54,15 @@ const styles = StyleSheet.create({
       marginTop: 10,
     },
   },
+  pageNumber: {
+    position: 'absolute',
+    fontSize: 12,
+    bottom: 30,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    color: 'grey',
+  },
 });
 
 Font.register({
@@ -78,7 +87,6 @@ Font.register({
 
 const Resume: React.FC<{size: PageSize , data: ScrapedResult }> = (props) => {
   const { info, education, experience } = props.data;
-  console.log({experience})
 
   const positions = experience.reduce((positionsResult: WorkExperienceProps[], experience: WorkExperience) => {
     const _positions: WorkExperienceProps[] = experience.positions.map((position => ({ company: experience.company, ...position } )))
@@ -99,6 +107,9 @@ const Resume: React.FC<{size: PageSize , data: ScrapedResult }> = (props) => {
         <Experience positions={positions}/>
       </View>
       <Text style={styles.footer}>This IS the candidate you are looking for</Text>
+      <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
+        `${pageNumber} / ${totalPages}`
+      )} fixed />
     </Page>
   );
 };
