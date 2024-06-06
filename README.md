@@ -4,7 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First install the project dependencies: `npm install`
 
-Next add a LinkedIn session cookie from your browser (it can be found by logging in to LinkedIn and then opening up your cookies and selecting the value of the `li_at` cookie) to an `.env.local` file; the variable should be called `SESSION_COOKIE`
+Next add a LinkedIn session cookie from your browser to an `.env.local` file; the variable should be called `SESSION_COOKIE` 
+(the cookie can be found by logging in to LinkedIn and then opening up your cookies and selecting the value of the `li_at` cookie) 
 
 Then run the development server:
 
