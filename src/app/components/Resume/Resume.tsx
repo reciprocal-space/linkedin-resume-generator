@@ -12,7 +12,7 @@ import {
 import Header from './Header';
 import Education from './Education';
 import Experience from './Experience';
-import { ScrapedResult, WorkExperience } from '@/app/types';
+import { PageSize, ScrapedResult, WorkExperience, WorkExperienceProps } from '@/app/types';
 
 const styles = StyleSheet.create({
   page: {
@@ -76,12 +76,12 @@ Font.register({
   src: `https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVSwiPHA.ttf`,
 });
 
-const Resume: React.FC<{data: ScrapedResult, size: PageSize}> = (props) => {
+const Resume: React.FC<{size: PageSize , data: ScrapedResult }> = (props) => {
   const { info, education, experience } = props.data;
   console.log({experience})
 
-  const positions = experience.reduce((positionsResult: [], experience: WorkExperience) => {
-    const _positions = experience.positions.map((position => ({ company: experience.company, ...position } )))
+  const positions = experience.reduce((positionsResult: WorkExperienceProps[], experience: WorkExperience) => {
+    const _positions: WorkExperienceProps[] = experience.positions.map((position => ({ company: experience.company, ...position } )))
     return positionsResult.concat(_positions)
   }, []);
 
@@ -103,7 +103,7 @@ const Resume: React.FC<{data: ScrapedResult, size: PageSize}> = (props) => {
   );
 };
 
-const App: React.FC = (props) => (
+const App: React.FC<{ data: ScrapedResult }> = (props) => (
   <Document
     author="Luke Skywalker"
     keywords="awesome, resume, start wars"

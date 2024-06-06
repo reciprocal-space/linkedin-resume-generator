@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Text, StyleSheet } from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
@@ -10,6 +10,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const Title = ({ children }) => <Text style={styles.title}>{children}</Text>;
+const Title: React.FC<PropsWithChildren> = ({ children }) => <Text style={styles.title}>{children}</Text>;
 
 export default Title;

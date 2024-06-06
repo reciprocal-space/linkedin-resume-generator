@@ -8,9 +8,10 @@ import { Search } from "./components/Search/Search";
 import { scrapeLinkedInProfile } from "./services/scraper";
 import Resume from "./components/Resume/Resume";
 import { Loader } from "./components/Loader/Loader";
+import { ScrapedResult } from "./types";
 
 export default function Home() {
-  const [data, setData] = useState();
+  const [data, setData] = useState<ScrapedResult>();
   const [isLoading, setIsLoading] = useState(false);
 
   const updateData = async (input: string) => {

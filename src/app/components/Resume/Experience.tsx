@@ -88,10 +88,10 @@ const Experience: React.FC<{ positions: WorkExperienceProps[] }> = ({ positions 
       <Title>Experience</Title>
       {positions.map(({ company, tenure, description, title }) => (
         <ExperienceEntry
-          company={company}
+          company={company!}
           date={tenure!}
           details={description!}
-          key={company + title}
+          key={company! + title!}
           position={title!}
         />
       ))}
