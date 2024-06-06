@@ -28,7 +28,7 @@ const Education: React.FC<{ education: EducationProps[] }> = ({ education }) => 
     <View style={styles.container}>
     <Title>Education</Title>
       {education.map((e) => (
-        <div>
+        <div key={`${e.university}-${e.years}`}>
           <Text style={styles.school}>{e.university}</Text>
           <Text style={styles.degree}>{e.degree}, {e.years}</Text>
           <Text style={styles.candidate}>{e.description}</Text>
